@@ -1,1 +1,1 @@
-iot-systems-project
+# IoT Systems: Design and Applications - Course Project
