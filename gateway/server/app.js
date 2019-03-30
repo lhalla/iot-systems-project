@@ -8,12 +8,14 @@ const middleware = require("./utils/middleware");
 
 const app = express();
 
-logger.info("connecting to", config.MONGODB_URI);
+logger.info("[GATEWAY] Connecting to MongoDB...");
 
 mongoose
   .connect(config.MONGODB_URI, { useNewUrlParser: true })
-  .then(() => logger.info("connected to MongoDB"))
-  .catch(error => logger.error("error connecting to MongoDB:", error.message));
+  .then(() => logger.info("[GATEWAY] Connected to MongoDB"))
+  .catch(error =>
+    logger.error("[GATEWAY] Error connecting to MongoDB:", error.message)
+  );
 
 app.use(bodyParser.json());
 

@@ -3,7 +3,7 @@ const Datum = require("../models/datum");
 const logger = require("../utils/logger");
 
 dataRouter.post("/new", async (req, res, next) => {
-  logger.info("[POST] received...");
+  logger.info("[GATEWAY::POST] Received...");
 
   const measurement = req.body;
 
@@ -18,9 +18,11 @@ dataRouter.post("/new", async (req, res, next) => {
     eCO2 !== undefined &&
     VOC !== undefined
   ) {
-    logger.info("[POST] received... a valid Datum");
+    logger.info("[GATEWAY::POST] Received... a valid Datum");
 
+    logger.info("[GATEWAY::POST] Adding a timestamp...");
     const datum = new Datum({
+      date: new Date().toISOString(),
       temperature: temperature,
       humidity: humidity,
       eCO2: eCO2,
@@ -30,16 +32,16 @@ dataRouter.post("/new", async (req, res, next) => {
     try {
       const savedDatum = await datum.save();
 
-      logger.info("[POST] datum saved to MongoDB");
+      logger.info("[GATEWAY::POST] Datum saved to MongoDB");
 
       res.json(savedDatum);
     } catch (exception) {
-      logger.error("[POST] validation failed");
+      logger.error("[GATEWAY::POST] Validation failed");
       next(exception);
     }
   } else {
-    logger.info("[POST] received... an invalid object");
-    res.status(400).send({ error: "invalid format" });
+    logger.info("[GATEWAY::POST] Received... an invalid object");
+    res.status(400).send({ error: "Invalid format" });
   }
 });
 
