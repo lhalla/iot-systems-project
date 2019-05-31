@@ -1,6 +1,10 @@
 const mongoose = require("mongoose");
 
 const datumSchema = new mongoose.Schema({
+  date: {
+    type: String,
+    required: true
+  },
   temperature: {
     type: Number,
     required: true
