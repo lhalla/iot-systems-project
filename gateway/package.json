@@ -1,0 +1,42 @@
+{
+  "name": "iot-systems-project-gateway",
+  "version": "0.1.0",
+  "description": "Course Project for \"IoT Systems: Design and Applications\" at the University of Turku",
+  "engines": {
+    "node": "^10.15.0"
+  },
+  "scripts": {
+    "start": "cross-env NODE_ENV=production node ./index.js",
+    "watch": "cross-env NODE_ENV=development nodemon ./index.js",
+    "test": "cross-env NODE_ENV=test jest --verbose"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lhalla/iot-sys-project.git"
+  },
+  "keywords": [],
+  "author": "Lauri Halla-aho, Sami Granö",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lhalla/iot-sys-project/issues"
+  },
+  "homepage": "https://github.com/lhalla/iot-sys-project#readme",
+  "dependencies": {
+    "axios": "^0.19.0",
+    "cors": "^2.8.5",
+    "dotenv": "7.0.0",
+    "express": "4.16.4",
+    "ip": "^1.1.5",
+    "mongoose": "5.4.20",
+    "public-ip": "^3.1.0"
+  },
+  "devDependencies": {
+    "cross-env": "5.2.0",
+    "jest": "24.5.0",
+    "nodemon": "1.18.10",
+    "supertest": "4.0.2"
+  },
+  "jest": {
+    "testEnvironment": "node"
+  }
+}
